@@ -2,38 +2,23 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
-title: use-el-dialog
-titleTemplate: easy and simple to use el-dialog by hook type
-
 hero:
   name: "use-el-dialog"
   text: "a hook for el-dialog"
   tagline: easy and simple to use el-dialog by hook type
   actions:
     - theme: brand
-      text: Get Start
+      text: Get Started
       link: /guide/
     - theme: alt
-      text: Api Reference
+      text: API References
       link: /reference/
-  image:
-    src: /logo.webp
-    alt: use-el-dialog
 
 features:
-  - icon:
-    title: Element Plus Component
-    details: Use component el-dialog from element-plus
-  - icon: ⚡
-    title: Quick call
-    details: Say goodbye to tedious variable and method creation
-  - icon: 🧰
-    title: Characteristic function
-    details: Some features are provided to take into account daily development requirements
+  - title: 基于Element Plus的el-dialog组件
+    details: 支持el-dialog组件的所有props和event，并且扩展了额外的快捷属性
+  - title: hook类型调用方式
+    details: 告别弹窗显示、隐藏等重复逻辑，统一暴露api可完成弹窗的显示、隐藏，确认按钮loading和disabled
+  - title: 动态更新弹窗props
+    details: 支持动态修改dialog的title、width、height、fullscreen等属性
 ---
-
-<style>
-  :root {
-    --primary-color: #333333;
-  }
-</style>

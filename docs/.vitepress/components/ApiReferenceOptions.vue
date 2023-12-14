@@ -9,23 +9,23 @@
 </template>
 
 <script setup>
-import { useElDialog } from 'use-el-dialog'
-import ReloadCmp from './ReloadCmp.vue'
+import { useElDialog } from "use-el-dialog";
+import ReloadCmp from "./ReloadCmp.vue";
 
 const [registerDialog, dialogMethods] = useElDialog({
-  title: 'Custom Title',
-  subBtuText: 'Oh Confirm',
-  cancelBtuText: 'Oh Cancel',
-  reload: true
-})
+  title: "Custom Title",
+  subBtuText: "Oh Confirm",
+  cancelBtuText: "Oh Cancel",
+  reload: true,
+});
 
 const handleOpen = () => {
-  dialogMethods.openModal()
-}
+  dialogMethods.openModal();
+};
 
 const onOk = () => {
-  dialogMethods.setSubLoading(false)
+  dialogMethods.setSubLoading(false);
 
-  dialogMethods.closeModal()
-}
+  dialogMethods.closeModal();
+};
 </script>

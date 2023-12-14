@@ -13,13 +13,13 @@
       <slot name="header" v-bind="$scope">
         <div class="use-el-dialog-title">
           <span class="el-dialog__title">{{ getBindValue.title }}</span>
-          <el-icon
+          <i
             class="use-el-dialog-icon el-dialog__close"
             v-if="getBindValue.fullscreenIcon"
             @click="toggleFullscreen"
           >
             <component :is="fullscreenIcon"></component>
-          </el-icon>
+          </i>
         </div>
       </slot>
     </template>

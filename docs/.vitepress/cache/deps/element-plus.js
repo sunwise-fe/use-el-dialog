@@ -89,7 +89,7 @@ import {
 import {
   __commonJS,
   __toESM
-} from "./chunk-UXIASGQL.js";
+} from "./chunk-LQ2VYIYD.js";
 
 // node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/dayjs.min.js
 var require_dayjs_min = __commonJS({
@@ -1918,7 +1918,7 @@ var baseSetData_default = baseSetData;
 
 // node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/_baseCreate.js
 var objectCreate = Object.create;
-var baseCreate = function() {
+var baseCreate = /* @__PURE__ */ function() {
   function object4() {
   }
   return function(proto) {
@@ -2799,7 +2799,7 @@ var baseIsArguments_default = baseIsArguments;
 var objectProto8 = Object.prototype;
 var hasOwnProperty6 = objectProto8.hasOwnProperty;
 var propertyIsEnumerable = objectProto8.propertyIsEnumerable;
-var isArguments = baseIsArguments_default(function() {
+var isArguments = baseIsArguments_default(/* @__PURE__ */ function() {
   return arguments;
 }()) ? baseIsArguments_default : function(value) {
   return isObjectLike_default(value) && hasOwnProperty6.call(value, "callee") && !propertyIsEnumerable.call(value, "callee");
@@ -9186,7 +9186,7 @@ var hasOwnProperty25 = objectProto29.hasOwnProperty;
 var symIterator2 = Symbol_default ? Symbol_default.iterator : void 0;
 var nativeMax17 = Math.max;
 var nativeMin15 = Math.min;
-var mixin2 = function(func) {
+var mixin2 = /* @__PURE__ */ function(func) {
   return function(object4, source, options) {
     if (options == null) {
       var isObj = isObject_default(source), props = isObj && keys_default(source), methodNames = props && props.length && baseFunctions_default(source, props);
@@ -23565,7 +23565,7 @@ var useButton = (props, emit) => {
       const slot = defaultSlot[0];
       if ((slot == null ? void 0 : slot.type) === Text) {
         const text = slot.children;
-        return /^\p{Unified_Ideograph}{2}$/u.test(text.trim());
+        return new RegExp("^\\p{Unified_Ideograph}{2}$", "u").test(text.trim());
       }
     }
     return false;

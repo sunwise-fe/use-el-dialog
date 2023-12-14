@@ -9,15 +9,15 @@ use-el-dialog is library, help you to use el-dialog from element-plus, easy and 
 ::: code-group
 
 ```bash [npm]
-npm i use-el-dialog
+npm i @sunwise/use-el-dialog
 ```
 
 ```bash [yarn]
-yarn add use-el-dialog
+yarn add @sunwise/use-el-dialog
 ```
 
 ```bash [pnpm]
-pnpm add use-el-dialog
+pnpm add @sunwise/use-el-dialog
 ```
 
 :::
@@ -25,10 +25,10 @@ pnpm add use-el-dialog
 2. Installed & Use Element Plus:
 
 ```js
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
 
-app.use(ElementPlus)
+app.use(ElementPlus);
 ```
 
 ::: info
@@ -38,9 +38,12 @@ The above is just one way to reference element plus, you can import element plus
 3. Add the plugin into your app:
 
 ```js
-import BasicElDialog from 'use-el-dialog'
+import BasicElDialog from "@sunwise/use-el-dialog";
 
-app.use(BasicElDialog)
+app.use(BasicElDialog, {
+  subBtuText: "确认",
+  cancelBtuText: "取消",
+});
 ```
 
 4. Use the `use-el-dialog` directive:
@@ -55,15 +58,15 @@ app.use(BasicElDialog)
 </template>
 
 <script setup>
-import { useElDialog } from 'use-el-dialog'
+import { useElDialog } from "use-el-dialog";
 
 const [registerDialog, dialogMethods] = useElDialog({
-  title: 'Custom Title'
-})
+  title: "Custom Title",
+});
 
 const handleOpen = () => {
-  dialogMethods.openModal()
-}
+  dialogMethods.openModal();
+};
 </script>
 ```
 

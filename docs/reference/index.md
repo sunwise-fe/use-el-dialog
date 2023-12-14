@@ -7,113 +7,150 @@ outline: deep
 ## Methods
 
 ### `openModal`
+
 open dialog
+
 ```js
 const [registerDialog, dialogMethods] = useElDialog({
-  title: 'Custom Title'
-})
+  title: "Custom Title",
+});
 
 const handleOpen = () => {
-  dialogMethods.openModal()
-}
+  dialogMethods.openModal();
+};
 ```
 
 ### `closeModal`
+
 close dialog
+
 ```js
 const [registerDialog, dialogMethods] = useElDialog({
-  title: 'Custom Title'
-})
+  title: "Custom Title",
+});
 
 const handleClose = () => {
-  dialogMethods.openModal()
+  dialogMethods.openModal();
 
   setTimeout(() => {
-    dialogMethods.closeModal()
-  }, 1500)
-}
+    dialogMethods.closeModal();
+  }, 1500);
+};
 ```
 
 ### `setSubLoading`
+
 change confirm button loading state
+
 ```js
 const [registerDialog, dialogMethods] = useElDialog({
-  title: 'Custom Title'
-})
+  title: "Custom Title",
+});
 
 const handleSetSubLoading = () => {
-  dialogMethods.openModal()
+  dialogMethods.openModal();
 
   setTimeout(() => {
-    dialogMethods.setSubLoading(true)
-  }, 1000)
+    dialogMethods.setSubLoading(true);
+  }, 1000);
 
   setTimeout(() => {
-    dialogMethods.setSubLoading(false)
-  }, 2000)
-}
+    dialogMethods.setSubLoading(false);
+  }, 2000);
+};
+```
+
+### `setSubDisabled`
+
+change confirm button loading state
+
+```js
+const [registerDialog, dialogMethods] = useElDialog({
+  title: "Custom Title",
+});
+
+const handleSetSubLoading = () => {
+  dialogMethods.openModal();
+
+  setTimeout(() => {
+    dialogMethods.setSubLoading(true);
+  }, 1000);
+
+  setTimeout(() => {
+    dialogMethods.setSubLoading(false);
+  }, 2000);
+};
 ```
 
 ### `setProps`
+
 async use methods to change dialog props value
+
 ```js
 const [registerDialog, dialogMethods] = useElDialog({
-  title: 'Custom Title'
-})
+  title: "Custom Title",
+});
 
 const handleSetProps = () => {
   dialogMethods.setProps({
-    title: 'title changed'
-  })
+    title: "title changed",
+  });
 
-  dialogMethods.openModal()
-}
+  dialogMethods.openModal();
+};
 ```
 
 <ApiReferenceMethods />
 
 ## Component Callback
 
+### `on-open`
+
+when the dialog open trigger
+
 ### `on-ok`
+
 confirm button callback
 
 ### `on-close`
+
 when the dialog close trigger
+
 ```vue
 <template>
   <div class="box-container">
     <el-button size="large" @click="handleOpen">Callback</el-button>
 
-    <basic-el-dialog 
-      @register="registerDialog" 
-      @on-ok="onOk" 
-      @on-close="onClose" 
+    <basic-el-dialog
+      @register="registerDialog"
+      @on-ok="onOk"
+      @on-close="onClose"
     />
   </div>
 </template>
 
 <script setup>
-import { useElDialog } from 'use-el-dialog'
-import { ElMessage } from 'element-plus';
+import { useElDialog } from "use-el-dialog";
+import { ElMessage } from "element-plus";
 
 const [registerDialog, dialogMethods] = useElDialog({
-  title: 'Custom Title'
-})
+  title: "Custom Title",
+});
 
 const handleOpen = () => {
-  dialogMethods.openModal()
-}
+  dialogMethods.openModal();
+};
 
 const onOk = () => {
-  dialogMethods.setSubLoading(false)
-  dialogMethods.closeModal()
+  dialogMethods.setSubLoading(false);
+  dialogMethods.closeModal();
 
-  ElMessage.success('ok')
-}
+  ElMessage.success("ok");
+};
 
 const onClose = () => {
-  ElMessage.error('close')
-}
+  ElMessage.error("close");
+};
 </script>
 ```
 
@@ -122,12 +159,15 @@ const onClose = () => {
 ## Extra Options
 
 ### `subBtuText`
+
 confirm button text
 
 ### `cancelBtuText`
+
 cancel button text
 
 ### `reload`
+
 decide the child component mounted
 
 ```vue
@@ -142,43 +182,42 @@ decide the child component mounted
 </template>
 
 <script setup>
-import { useElDialog } from 'use-el-dialog'
-import ReloadCmp from './ReloadCmp.vue'
+import { useElDialog } from "use-el-dialog";
+import ReloadCmp from "./ReloadCmp.vue";
 
 const [registerDialog, dialogMethods] = useElDialog({
-  title: 'Custom Title',
-  subBtuText: 'Oh Confirm',
-  cancelBtuText: 'On Cancel',
-  reload: true
-})
+  title: "Custom Title",
+  subBtuText: "Oh Confirm",
+  cancelBtuText: "On Cancel",
+  reload: true,
+});
 
 const handleOpen = () => {
-  dialogMethods.openModal()
-}
+  dialogMethods.openModal();
+};
 
 const onOk = () => {
-  dialogMethods.setSubLoading(false)
+  dialogMethods.setSubLoading(false);
 
-  dialogMethods.closeModal()
-}
+  dialogMethods.closeModal();
+};
 </script>
 ```
 
 ReloadCmp.vue
+
 ```vue
 <template>
-  <div>
-    Child Component
-  </div>
+  <div>Child Component</div>
 </template>
 
 <script setup>
-import { ElMessage } from 'element-plus';
-import { onMounted } from 'vue';
+import { ElMessage } from "element-plus";
+import { onMounted } from "vue";
 
 onMounted(() => {
-  ElMessage.success('mounted!')
-})
+  ElMessage.success("mounted!");
+});
 </script>
 ```
 
@@ -187,12 +226,15 @@ onMounted(() => {
 ## Slots
 
 ### `header`
+
 header slot
 
 ### `default`
+
 main content slot
 
 ### `footer`
+
 footer content slot
 
 ```vue
@@ -201,31 +243,24 @@ footer content slot
     <el-button size="large" @click="handleOpen">openModal</el-button>
 
     <basic-el-dialog @register="registerDialog" @on-ok="onOk">
-      <template #header>
-        this is header slot
-      </template>
-      <template #default>
-        this is default slot
-      </template>
-      <template #footer>
-        this is footer slot
-      </template>
+      <template #header> this is header slot </template>
+      <template #default> this is default slot </template>
+      <template #footer> this is footer slot </template>
     </basic-el-dialog>
   </div>
 </template>
 
 <script setup>
-import { useElDialog } from 'use-el-dialog'
+import { useElDialog } from "use-el-dialog";
 
 const [registerDialog, dialogMethods] = useElDialog({
-  title: 'Custom Title',
-})
+  title: "Custom Title",
+});
 
 const handleOpen = () => {
-  dialogMethods.openModal()
-}
+  dialogMethods.openModal();
+};
 </script>
 ```
 
 <ApiReferenceSlots />
-

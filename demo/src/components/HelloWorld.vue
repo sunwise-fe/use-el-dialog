@@ -107,6 +107,7 @@ const myFormRef = ref();
 
 const [registerBaseDialog, baseDialogMethods] = useElDialog({
   title: "基本使用",
+  fullscreenIcon: true,
   closeOnClickModal: true,
 });
 
