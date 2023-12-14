@@ -14,7 +14,7 @@
         <div class="use-el-dialog-title">
           <span class="el-dialog__title">{{ getBindValue.title }}</span>
           <i
-            class="use-el-dialog-icon el-dialog__close"
+            class="el-icon use-el-dialog-icon el-dialog__close"
             v-if="getBindValue.fullscreenIcon"
             @click="toggleFullscreen"
           >
