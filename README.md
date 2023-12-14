@@ -73,33 +73,37 @@ const handleOpen = () => {
 
 use-el-dialog 继承了 el-dialog 的属性，在此基础之上还实现了其他属性
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必填 |
-|subBtuText| 弹框确认按钮文案| string| 确认| 否|
-|cancelBtuText |弹框取消按钮文案| string| 取消 |否|
-|reload| 是否每次弹框展示时触发子组件重载| boolean|false| 否|
-|fullscreenIcon |是否显示全屏按钮|boolean|false|否|
+| 参数           | 说明                             | 类型    | 可选值 | 默认值 | 是否必填 |
+| -------------- | -------------------------------- | ------- | ------ | ------ | -------- |
+| subBtuText     | 弹框确认按钮文案                 | string  | 确认   | 否     |
+| cancelBtuText  | 弹框取消按钮文案                 | string  | 取消   | 否     |
+| reload         | 是否每次弹框展示时触发子组件重载 | boolean | false  | 否     |
+| fullscreenIcon | 是否显示全屏按钮                 | boolean | false  | 否     |
 
 ## Methods
 
-|名称| 说明| 参数|
-|openModal| 打开弹框 |-|
-|closeModal |关闭弹框 |-|
-|setSubLoading| 设置“确认”按钮加载状态 |(state: boolean)|
-|setSubDisabled| 设置“确认”按钮不可点击状态 |(state: boolean)|
-|setProps| 动态设置属性 |use-el-dialog attr|
+| 名称           | 说明                       | 参数               |
+| -------------- | -------------------------- | ------------------ |
+| openModal      | 打开弹框                   | -                  |
+| closeModal     | 关闭弹框                   | -                  |
+| setSubLoading  | 设置“确认”按钮加载状态     | (state: boolean)   |
+| setSubDisabled | 设置“确认”按钮不可点击状态 | (state: boolean)   |
+| setProps       | 动态设置属性               | use-el-dialog attr |
 
 ## Events
 
-|名称| 说明| 参数|
-|on-open |弹窗打开后回调 |Function|
-|on-ok |按钮“确认”回调| Function|
-|on-cancel |按钮“取消”回调 |Function|
+| 名称      | 说明           | 参数     |
+| --------- | -------------- | -------- |
+| on-open   | 弹窗打开后回调 | Function |
+| on-ok     | 按钮“确认”回调 | Function |
+| on-cancel | 按钮“取消”回调 | Function |
 
 ## Slots
 
-|名称| 说明| 参数|
-|header| 头部插槽 |-|
-|default| 中间插槽 |-|
-|footer| 脚部插槽 |-|
+| 名称    | 说明     | 参数 |
+| ------- | -------- | ---- |
+| header  | 头部插槽 | -    |
+| default | 中间插槽 | -    |
+| footer  | 脚部插槽 | -    |
 
 > use-el-dialog 使用的前提，需要保证 element-plus 正确引入并使用。use-el-dialog 本身并不携带 element-plus。
