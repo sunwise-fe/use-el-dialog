@@ -1,0 +1,32 @@
+{
+  "hash": "11060303",
+  "browserHash": "c110efae",
+  "optimized": {
+    "vue": {
+      "src": "../../../../node_modules/.pnpm/vue@3.3.11_typescript@5.3.3/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "c48d2f65",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../node_modules/.pnpm/@vue+devtools-api@6.5.1/node_modules/@vue/devtools-api/lib/esm/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "44f23dec",
+      "needsInterop": false
+    },
+    "element-plus": {
+      "src": "../../../../node_modules/.pnpm/element-plus@2.4.3_vue@3.3.11/node_modules/element-plus/es/index.mjs",
+      "file": "element-plus.js",
+      "fileHash": "1937d4c6",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-TMMPIVMO": {
+      "file": "chunk-TMMPIVMO.js"
+    },
+    "chunk-UXIASGQL": {
+      "file": "chunk-UXIASGQL.js"
+    }
+  }
+}

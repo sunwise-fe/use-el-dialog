@@ -1,0 +1,71 @@
+{
+  "name": "@sunwise/use-el-dialog",
+  "version": "1.0.0",
+  "description": "通过hook方式调用element-plus的el-dialog",
+  "author": "zuopf769",
+  "scripts": {
+    "dev": "vite --force --host",
+    "build": "npx vite build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "main": "dist/use-el-dialog.umd.js",
+  "module": "dist/use-el-dialog.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/use-el-dialog.umd.js",
+      "import": "./dist/use-el-dialog.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "*.mjs"
+  ],
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search",
+        "search-insights"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "@vitejs/plugin-vue": "^4.3.4",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-plugin-dts": "^3.5.3",
+    "vitepress": "1.0.0-rc.20",
+    "vue": "^3.3.4",
+    "vue-tsc": "^1.6.5"
+  },
+  "dependencies": {
+    "element-plus": "^2.3.14"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "bugs": {
+    "url": "https://github.com/sunwise-fe/use-el-dialog/issues"
+  },
+  "homepage": "",
+  "keywords": [
+    "vue",
+    "vue3",
+    "element-plus",
+    "vite",
+    "dialog"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunwise-fe/use-el-dialog.git",
+    "directory": "packages/use-el-dialog"
+  }
+}

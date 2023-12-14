@@ -1,0 +1,207 @@
+<template>
+  <div class="box-container">
+    <el-space wrap>
+      <el-button size="large" @click="onBaseClick">基本使用</el-button>
+      <el-button size="large" @click="onDraggableClick">可拖拽</el-button>
+      <el-button size="large" @click="onFullscreenClick">全屏</el-button>
+      <el-button size="large" @click="onFullscreenBtnClick">全屏按钮</el-button>
+      <el-button size="large" @click="onModalClick">无背景遮罩层</el-button>
+      <el-button size="large" @click="onHeaderSlotClick">自定义头部</el-button>
+      <el-button size="large" @click="onFooterSlotClick">自定义底部</el-button>
+      <el-button size="large" @click="onOpenClick"> 打开后的回调 </el-button>
+      <el-button size="large" @click="onSubDisabledClick">
+        确认按钮disabled状态
+      </el-button>
+      <el-button size="large" @click="onSubLoadingClick">
+        确认按钮事件
+      </el-button>
+      <el-button size="large" @click="onSubLoadingClick">
+        确认按钮事件
+      </el-button>
+      <el-button size="large" @click="onNestingClick"> 嵌套的弹窗 </el-button>
+    </el-space>
+    <basic-el-dialog @register="registerBaseDialog">
+      <span>弹框内容-基本使用</span>
+    </basic-el-dialog>
+    <basic-el-dialog @register="registerDraggableDialog">
+      <span>弹框内容-可拖拽</span>
+    </basic-el-dialog>
+    <basic-el-dialog @register="registerFullscreenDialog">
+      <span>弹框内容-全屏</span>
+    </basic-el-dialog>
+    <basic-el-dialog @register="registerFullscreenBtnDialog">
+      <span>弹框内容-全屏按钮</span>
+    </basic-el-dialog>
+    <basic-el-dialog @register="registerModalDialog">
+      <span>弹框内容-无遮罩层</span>
+    </basic-el-dialog>
+    <basic-el-dialog @register="registerHeaderSlotDialog">
+      <template #header>
+        <div style="color: red">自定义头部</div>
+      </template>
+      <span>弹框内容-自定义头部</span>
+    </basic-el-dialog>
+    <basic-el-dialog @register="registerFooterSlotDialog">
+      <span>弹框内容-自定义底部</span>
+      <template #footer>
+        <el-button @click="footerSlotDialogMethods.closeModal()">
+          按钮1
+        </el-button>
+        <el-button type="primary" plain>按钮2</el-button>
+        <el-button type="primary" round>按钮3</el-button>
+      </template>
+    </basic-el-dialog>
+    <basic-el-dialog @register="registerOpenDialog" @on-open="handleOpen">
+      <span>弹框内容-打开后的回调</span>
+    </basic-el-dialog>
+    <basic-el-dialog
+      @register="registerSubDisabledDialog"
+      @on-open="handleSubDisabledDialogOpen"
+    >
+      <div>弹框内容-确认按钮disabled</div>
+      <el-button type="primary" plain @click="handleChangeSubDisabled">
+        确认按钮可以点击
+      </el-button>
+    </basic-el-dialog>
+    <basic-el-dialog
+      @register="registerSubLoadingDialog"
+      @on-ok="hanleSubLoadingDialogOK"
+    >
+      <span>弹框内容-确认按钮loading关闭</span>
+    </basic-el-dialog>
+    <basic-el-dialog @register="registerNestingDialog">
+      <el-button size="large" @click="onSubDialogClick"
+        >点击打开子弹窗</el-button
+      >
+    </basic-el-dialog>
+    <basic-el-dialog @register="registerNestSubDialog">
+      <span>子弹窗</span>
+    </basic-el-dialog>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ElMessage } from "element-plus";
+import { useElDialog } from "../../../package/index.ts";
+
+const [registerBaseDialog, baseDialogMethods] = useElDialog({
+  title: "基本使用",
+});
+
+const onBaseClick = () => {
+  baseDialogMethods.openModal();
+};
+
+const [registerDraggableDialog, draggableDialogMethods] = useElDialog({
+  title: "可拖拽",
+  draggable: true,
+});
+
+const onDraggableClick = () => {
+  draggableDialogMethods.openModal();
+};
+
+const [registerFullscreenDialog, fullscreenDialogMethods] = useElDialog({
+  title: "全屏",
+  fullscreen: true,
+});
+
+const onFullscreenClick = () => {
+  fullscreenDialogMethods.openModal();
+};
+
+const [registerFullscreenBtnDialog, fullscreenBtnDialogMethods] = useElDialog({
+  title: "全屏按钮",
+  fullscreenIcon: true,
+});
+
+const onFullscreenBtnClick = () => {
+  fullscreenBtnDialogMethods.openModal();
+};
+
+const [registerModalDialog, modalDialogMethods] = useElDialog({
+  title: "无背景遮罩层",
+  modal: false,
+});
+
+const onModalClick = () => {
+  modalDialogMethods.openModal();
+};
+
+const [registerHeaderSlotDialog, headerSlotDialogMethods] = useElDialog({
+  title: "自定义头部",
+  modal: false,
+});
+
+const onHeaderSlotClick = () => {
+  headerSlotDialogMethods.openModal();
+};
+
+const [registerFooterSlotDialog, footerSlotDialogMethods] = useElDialog({
+  title: "自定义底部",
+  modal: false,
+});
+
+const onFooterSlotClick = () => {
+  footerSlotDialogMethods.openModal();
+};
+
+const [registerOpenDialog, openMethods] = useElDialog({
+  title: "打开后的回调",
+});
+
+const onOpenClick = () => {
+  openMethods.openModal();
+};
+
+const handleOpen = () => {
+  ElMessage("open");
+};
+
+const [registerSubDisabledDialog, subDisabledDialogMethods] = useElDialog({
+  title: "确认按钮disabled",
+});
+
+const onSubDisabledClick = () => {
+  subDisabledDialogMethods.openModal();
+};
+
+const handleSubDisabledDialogOpen = () => {
+  subDisabledDialogMethods.setSubDisabled(true);
+};
+
+const handleChangeSubDisabled = () => {
+  subDisabledDialogMethods.setSubDisabled(false);
+};
+
+const [registerSubLoadingDialog, subLoadingDialogMethods] = useElDialog({
+  title: "确认按钮loading",
+});
+
+const onSubLoadingClick = () => {
+  subLoadingDialogMethods.openModal();
+};
+
+const hanleSubLoadingDialogOK = () => {
+  setTimeout(() => {
+    subLoadingDialogMethods.closeModal();
+  }, 1000);
+};
+
+const [registerNestingDialog, nestingDialogMethods] = useElDialog({
+  title: "嵌套弹窗",
+});
+
+const onNestingClick = () => {
+  nestingDialogMethods.openModal();
+};
+
+const [registerNestSubDialog, nestSubDialogMethods] = useElDialog({
+  title: "嵌套子弹窗",
+  width: "500px",
+});
+
+const onSubDialogClick = () => {
+  nestSubDialogMethods.openModal();
+};
+</script>
