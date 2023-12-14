@@ -19,6 +19,13 @@
         确认按钮事件
       </el-button>
       <el-button size="large" @click="onNestingClick"> 嵌套的弹窗 </el-button>
+      <el-button size="large" @click="onUpdateClick"
+        >更改弹窗自身属性</el-button
+      >
+    </el-space>
+    <el-divider />
+    <el-space wrap>
+      <el-button size="large" @click="onFormClick">结合form表单</el-button>
     </el-space>
     <basic-el-dialog @register="registerBaseDialog">
       <span>弹框内容-基本使用</span>
@@ -77,15 +84,30 @@
     <basic-el-dialog @register="registerNestSubDialog">
       <span>子弹窗</span>
     </basic-el-dialog>
+    <basic-el-dialog @register="registerUpdateDialog">
+      <el-button type="primary" :disabled="pageNo < 2" @click="handlePre"
+        >上一页</el-button
+      >
+      <el-button type="primary" @click="handleNext">下一页</el-button>
+    </basic-el-dialog>
+    <basic-el-dialog @register="registerFormDialog" @on-ok="handleFormOk">
+      <MyForm ref="myFormRef"></MyForm>
+    </basic-el-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { ElMessage } from "element-plus";
 import { useElDialog } from "../../../package/index.ts";
+import MyForm from "./MyForm.vue";
+
+let pageNo = ref(1);
+const myFormRef = ref();
 
 const [registerBaseDialog, baseDialogMethods] = useElDialog({
   title: "基本使用",
+  closeOnClickModal: true,
 });
 
 const onBaseClick = () => {
@@ -203,5 +225,44 @@ const [registerNestSubDialog, nestSubDialogMethods] = useElDialog({
 
 const onSubDialogClick = () => {
   nestSubDialogMethods.openModal();
+};
+
+const [registerUpdateDialog, updateDialogMethods] = useElDialog({
+  title: `第1页`,
+});
+
+const onUpdateClick = () => {
+  updateDialogMethods.openModal();
+};
+
+const handlePre = () => {
+  pageNo.value--;
+  updateDialogMethods.setProps({ title: `第${pageNo.value}页` });
+};
+
+const handleNext = () => {
+  pageNo.value++;
+  updateDialogMethods.setProps({ title: `第${pageNo.value}页` });
+};
+
+const [registerFormDialog, formDialogMethods] = useElDialog({
+  title: "表单",
+  reload: true,
+});
+
+const onFormClick = () => {
+  formDialogMethods.openModal();
+};
+
+const handleFormOk = async () => {
+  if (!myFormRef.value) return;
+  let formRes = await myFormRef?.value.submitForm();
+  console.log("formRes", formRes);
+  if (formRes) {
+    formDialogMethods.closeModal();
+    formDialogMethods.setSubLoading(false);
+  } else {
+    formDialogMethods.setSubLoading(false);
+  }
 };
 </script>
