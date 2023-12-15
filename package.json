@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "通过hook方式调用element-plus的el-dialog",
   "author": "zuopf769",
+  "license": "MIT",
   "scripts": {
     "dev": "vite --force --host",
     "build": "npx vite build",
@@ -62,10 +63,13 @@
     "vite",
     "dialog"
   ],
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sunwise-fe/use-el-dialog.git",
     "directory": "packages/use-el-dialog"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

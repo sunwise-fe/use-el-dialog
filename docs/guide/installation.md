@@ -28,6 +28,7 @@ Install the plugin into Vue:
 
 ```javascript
 import BasicElDialog from "@sunwise/use-el-dialog";
+import "@sunwise/use-el-dialog/dist/style.css";
 
 app.use(BasicElDialog, {
   // 确认按钮文字
