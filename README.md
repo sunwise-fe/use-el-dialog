@@ -31,10 +31,11 @@ const dialogVisible = ref(false);
 main.js 中
 
 ```js
-import BasicElDialog from "../../package/index.ts";
-
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
+
+import BasicElDialog from "@sunwise/use-el-dialog";
+import "@sunwise/use-el-dialog/dist/style.css";
 
 createApp(App)
   .use(BasicElDialog, {
