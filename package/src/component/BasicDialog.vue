@@ -13,6 +13,8 @@
       <slot name="header" v-bind="$scope">
         <div class="use-el-dialog-title">
           <span class="el-dialog__title">{{ getBindValue.title }}</span>
+        </div>
+      </slot>
           <i
             class="el-icon use-el-dialog-icon el-dialog__close"
             v-if="getBindValue.fullscreenIcon"
@@ -20,8 +22,6 @@
           >
             <component :is="fullscreenIcon"></component>
           </i>
-        </div>
-      </slot>
     </template>
     <template #default>
       <template v-if="reload">
@@ -176,7 +176,7 @@ if (instance) {
 </script>
 
 <style>
-.use-el-basic-dialog .use-el-dialog-title {
+.use-el-basic-dialog .use-el-dialog-title,.el-dialog__header {
   display: flex;
   justify-content: space-between;
   align-items: center;

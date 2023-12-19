@@ -22,6 +22,7 @@
       <el-button size="large" @click="onUpdateClick"
         >更改弹窗自身属性</el-button
       >
+      <el-button size="large" @click="onTestClick"> 测试功能 </el-button>
     </el-space>
     <el-divider />
     <el-space wrap>
@@ -92,6 +93,25 @@
     </basic-el-dialog>
     <basic-el-dialog @register="registerFormDialog" @on-ok="handleFormOk">
       <MyForm ref="myFormRef"></MyForm>
+    </basic-el-dialog>
+
+    <basic-el-dialog @register="registerTestDialog">
+      <template #header>
+        <div style="color: rgb(17, 146, 244);font-weight: bold;">我是自定义头部标题呀</div>
+      </template>
+      <el-table :data="tableData" stripe style="width: 100%">
+        <el-table-column prop="date" label="Date" width="180" />
+        <el-table-column prop="name" label="Name" width="180" />
+        <el-table-column prop="address" label="Address" />
+      </el-table>
+      <template #footer>
+        <el-button type="primary" @click="onSubDialogHandler">
+          打开子弹窗
+        </el-button>
+      </template>
+    </basic-el-dialog>
+    <basic-el-dialog @register="registerSubDialog" @on-ok="handlerSubDialogOK">
+      <span>我是子弹窗内容</span>
     </basic-el-dialog>
   </div>
 </template>
@@ -266,4 +286,50 @@ const handleFormOk = async () => {
     formDialogMethods.setSubLoading(false);
   }
 };
+
+const [registerTestDialog,onTestDialogMethods] = useElDialog({
+  title:'这是自定义头和底部',
+  fullscreenIcon: true,
+})
+const onTestClick = ()=>{
+  onTestDialogMethods.openModal()
+}
+const [registerSubDialog, subDialogMethods] = useElDialog({
+  title: "这是嵌套子弹窗",
+  width: "300px",
+  modal: false,
+  draggable: true,
+});
+const onSubDialogHandler = () => {
+  subDialogMethods.openModal();
+};
+const handlerSubDialogOK= ()=>{
+  alert('我要被关闭了~~~~~')
+  setTimeout(() => {
+    subDialogMethods.closeModal();
+  }, 1000);
+}
+
+const tableData = [
+  {
+    date: '2016-05-03',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-04',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-01',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+]
 </script>
