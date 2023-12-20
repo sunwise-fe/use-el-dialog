@@ -1,6 +1,6 @@
 {
   "name": "@sunwise/use-el-dialog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "通过hook方式调用element-plus的el-dialog",
   "author": "zuopf769",
   "license": "MIT",
