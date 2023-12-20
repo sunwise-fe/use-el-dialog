@@ -15,13 +15,13 @@
           <span class="el-dialog__title">{{ getBindValue.title }}</span>
         </div>
       </slot>
-          <i
-            class="el-icon use-el-dialog-icon el-dialog__close"
-            v-if="getBindValue.fullscreenIcon"
-            @click="toggleFullscreen"
-          >
-            <component :is="fullscreenIcon"></component>
-          </i>
+      <i
+        class="el-icon use-el-dialog-icon el-dialog__close"
+        v-if="getBindValue.fullscreenIcon"
+        @click="toggleFullscreen"
+      >
+        <component :is="fullscreenIcon"></component>
+      </i>
     </template>
     <template #default>
       <template v-if="reload">
@@ -176,7 +176,8 @@ if (instance) {
 </script>
 
 <style>
-.use-el-basic-dialog .use-el-dialog-title,.el-dialog__header {
+.use-el-basic-dialog .use-el-dialog-title,
+.el-dialog__header {
   display: flex;
   justify-content: space-between;
   align-items: center;

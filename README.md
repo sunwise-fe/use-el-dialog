@@ -26,6 +26,13 @@ const dialogVisible = ref(false);
 
 如果实现表单的弹框嵌套，实际逻辑更复杂，涉及到了表单的数据获取，弹框按钮的 loading 状态，弹框的展示与隐藏等控制，实现这些功能，需要通过声明大量的额外变量进行控制。
 
+## 查看 demo
+
+```bash
+cd demo
+yarn run dev
+```
+
 ## 通过 use-el-dialog 的使用方式
 
 main.js 中

@@ -22,7 +22,7 @@
       <el-button size="large" @click="onUpdateClick"
         >更改弹窗自身属性</el-button
       >
-      <el-button size="large" @click="onTestClick"> 测试功能 </el-button>
+      <el-button size="large" @click="onNestGridClick"> 嵌套表格 </el-button>
     </el-space>
     <el-divider />
     <el-space wrap>
@@ -95,9 +95,11 @@
       <MyForm ref="myFormRef"></MyForm>
     </basic-el-dialog>
 
-    <basic-el-dialog @register="registerTestDialog">
+    <basic-el-dialog @register="registerNestGridDialog">
       <template #header>
-        <div style="color: rgb(17, 146, 244);font-weight: bold;">我是自定义头部标题呀</div>
+        <div style="color: rgb(17, 146, 244); font-weight: bold">
+          我是自定义头部标题呀
+        </div>
       </template>
       <el-table :data="tableData" stripe style="width: 100%">
         <el-table-column prop="date" label="Date" width="180" />
@@ -287,13 +289,13 @@ const handleFormOk = async () => {
   }
 };
 
-const [registerTestDialog,onTestDialogMethods] = useElDialog({
-  title:'这是自定义头和底部',
+const [registerNestGridDialog, onNestGridDialogMethods] = useElDialog({
+  title: "这是自定义头和底部",
   fullscreenIcon: true,
-})
-const onTestClick = ()=>{
-  onTestDialogMethods.openModal()
-}
+});
+const onNestGridClick = () => {
+  onNestGridDialogMethods.openModal();
+};
 const [registerSubDialog, subDialogMethods] = useElDialog({
   title: "这是嵌套子弹窗",
   width: "300px",
@@ -303,33 +305,33 @@ const [registerSubDialog, subDialogMethods] = useElDialog({
 const onSubDialogHandler = () => {
   subDialogMethods.openModal();
 };
-const handlerSubDialogOK= ()=>{
-  alert('我要被关闭了~~~~~')
+const handlerSubDialogOK = () => {
+  alert("我要被关闭了~~~~~");
   setTimeout(() => {
     subDialogMethods.closeModal();
   }, 1000);
-}
+};
 
 const tableData = [
   {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    date: "2016-05-03",
+    name: "Tom",
+    address: "No. 189, Grove St, Los Angeles",
   },
   {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    date: "2016-05-02",
+    name: "Tom",
+    address: "No. 189, Grove St, Los Angeles",
   },
   {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    date: "2016-05-04",
+    name: "Tom",
+    address: "No. 189, Grove St, Los Angeles",
   },
   {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    date: "2016-05-01",
+    name: "Tom",
+    address: "No. 189, Grove St, Los Angeles",
   },
-]
+];
 </script>
